@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+        .definition {
+            margin: 20px 0;
+            font-size: 18px;
+            background-color: #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-question {
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        .quiz-option {
+            display: block;
+            margin: 10px 0;
+        }
+        .quiz-submit {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cybersecurity Quiz</h1>
+        
+        <!-- Encryption Definition -->
+        <div class="definition">
+            <h2>What is Encryption?</h2>
+            <p>Encryption is a process that converts information or data into a code, especially to prevent unauthorized access. It is a key component of cybersecurity, used to protect sensitive data such as personal information, financial transactions, and confidential communications.</p>
+        </div>
+
+        <!-- Quiz Question -->
+        <p class="quiz-question">What is the primary purpose of encryption?</p>
+        <label class="quiz-option"><input type="radio" name="question1" value="a"> To speed up internet connections</label>
+        <label class="quiz-option"><input type="radio" name="question1" value="b"> To protect data from unauthorized access</label>
+        <label class="quiz-option"><input type="radio" name="question1" value="c"> To reduce file sizes</label>
+        <label class="quiz-option"><input type="radio" name="question1" value="d"> To monitor online activity</label>
+        
+        <!-- Submit Button -->
+        <button class="quiz-submit" onclick="submitQuiz()">Submit</button>
+        <p id="quiz-feedback"></p>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const answer = document.querySelector('input[name="question1"]:checked');
+            const feedback = document.getElementById('quiz-feedback');
+
+            if (answer) {
+                if (answer.value === 'b') {
+                    feedback.textContent = 'Correct! Encryption is used to protect data from unauthorized access.';
+                    feedback.style.color = 'green';
+                } else {
+                    feedback.textContent = 'Incorrect. Please try again.';
+                    feedback.style.color = 'red';
+                }
+            } else {
+                feedback.textContent = 'Please select an answer before submitting.';
+                feedback.style.color = 'orange';
+            }
+        }
+    </script>
+</body>
+</html>
