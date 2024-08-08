@@ -1,0 +1,65 @@
+.mission-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #000;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+  }
+  
+  .left-sidebar {
+    width: 200px;
+    padding: 20px;
+    background-color: #111;
+    border-right: 1px solid #0f0;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .file-system {
+    margin-top: 20px;
+  }
+  
+  .file-item {
+    margin: 5px 0;
+    cursor: pointer;
+  }
+  
+  .file-item:hover {
+    text-decoration: underline;
+  }
+  
+  .file-item.child {
+    margin-left: 20px;
+  }
+  
+  .file-content {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #111;
+    border: 1px solid #0f0;
+  }
+  
+  .bottom-progress {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #111;
+  }
+  
+  .progress-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #444;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .progress-dot.active {
+    background-color: #0f0;
+  }

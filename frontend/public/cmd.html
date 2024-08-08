@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Escape: The Griffith Challenge</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+        }
+        .left-container, .right-container {
+            flex: 1;
+            padding: 10px;
+        }
+        .center-container {
+            flex: 2;
+            padding: 10px;
+        }
+        #terminal {
+            border: 1px solid #0f0;
+            height: 400px;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+        #input {
+            background-color: #000;
+            border: 1px solid #0f0;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            margin-top: 10px;
+            padding: 5px;
+            width: 100%;
+        }
+        .system-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .stat-bar {
+            width: 30%;
+            background-color: #000;
+            border: 1px solid #0f0;
+            padding: 5px;
+        }
+        .progress-bar {
+            width: 0;
+            height: 10px;
+            background-color: #0f0;
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-container">
+            <h2>Announcements</h2>
+            <!-- Add your announcements or blog posts here -->
+             <h3>System Status</h3>
+            <!-- Add your system status information here -->
+        </div>
+        <div class="center-container">
+            <h1>Cyber Escape: The Griffith Challenge</h1>
+            <div id="terminal"></div>
+            <input type="text" id="input" placeholder="Enter command...">
+            <div class="system-stats">
+                <div class="stat-bar">
+                    CPU Usage
+                    <div class="progress-bar" id="cpu-usage"></div>
+                </div>
+                <div class="stat-bar">
+                    RAM Usage
+                    <div class="progress-bar" id="ram-usage"></div>
+                </div>
+                <div class="stat-bar">
+                    Hacking Resources
+                    <div class="progress-bar" id="hacking-resources"></div>
+                </div>
+            </div>
+        </div>
+        <div class="right-container">
+            <h2>Latest Blog Posts</h2>
+            <!-- Add your blog posts or additional information here -->
+             <h3>Contact Information</h3>
+             <h3> Griffith University</h3>
+            <!-- Add your contact information here -->
+        </div>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+        const input = document.getElementById('input');
+        const cpuUsage = document.getElementById('cpu-usage');
+        const ramUsage = document.getElementById('ram-usage');
+        const hackingResources = document.getElementById('hacking-resources');
+
+        function addToTerminal(text) {
+            terminal.innerHTML += text + '<br>';
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        input.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                const command = input.value;
+                addToTerminal('> ' + command);
+                processCommand(command);
+                input.value = '';
+            }
+        });
+
+        function processCommand(command) {
+            // Add your command processing logic here
+            // This is where you'll implement the game's puzzles and progression
+        }
+
+        function updateSystemStats() {
+            // Simulate CPU and RAM usage based on user input or game events
+            const cpuValue = Math.floor(Math.random() * 100);
+            const ramValue = Math.floor(Math.random() * 100);
+            cpuUsage.style.width = cpuValue + '%';
+            ramUsage.style.width = ramValue + '%';
+        }
+
+        function updateHackingResources(value) {
+            // Update hacking resources based on user actions or game progress
+            hackingResources.style.width = value + '%';
+        }
+
+        // Initial "boot sequence"
+        setTimeout(() => addToTerminal('Initializing Griffith University Network...'), 1000);
+        setTimeout(() => addToTerminal('WARNING: Unauthorized access detected!'), 2000);
+        setTimeout(() => addToTerminal('WARNING: Functions restricted'), 2000);
+        setTimeout(() => addToTerminal('WARNING: System locked!'), 2000);
+        setTimeout(() => addToTerminal('AI Security System activated. Prove your skills to escape!'), 3000);
+        setInterval(updateSystemStats, 2000); // Update system stats every 2 seconds
+    </script>
+</body>
+</html>

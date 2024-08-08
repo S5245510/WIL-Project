@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Escape: The Griffith Challenge</title>
+    <link rel="stylesheet" href="styles/cmd.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-container">
+            <h2>Announcements</h2>
+            <h3>System Status</h3>
+            <div id="video-container"></div>
+        </div>
+        <div class="center-container">
+            <h1>Cyber Escape: The Griffith Challenge</h1>
+            <div id="terminal"></div>
+            <input type="text" id="input" placeholder="Enter command...">
+            <div class="system-stats">
+                <div class="stat-bar">
+                    CPU Usage
+                    <div class="progress-bar" id="cpu-usage"></div>
+                </div>
+                <div class="stat-bar">
+                    RAM Usage
+                    <div class="progress-bar" id="ram-usage"></div>
+                </div>
+                <div class="stat-bar">
+                    Hacking Resources
+                    <div class="progress-bar" id="hacking-resources"></div>
+                    <input type="number" id="level-input" placeholder="Enter level number">
+                    <button onclick="loadLevel()">Load Level</button>
+                </div>
+            </div>
+            <div id="main-container"></div>
+            <div class="puzzle-container" id="puzzle-container"></div>
+        </div>
+        <div class="right-container">
+            <h2>Hacker Notes</h2>
+            <div class="file-item" id="home" onclick="showDetails('home')">/home</div>
+            <div class="file-item" id="log" onclick="showDetails('log')">/log</div>
+            <div class="file-item" id="bin" onclick="showDetails('bin')">/bin</div>
+            <div class="file-item" id="sys" onclick="showDetails('sys')">/sys</div>
+            <div id="details"></div>
+        </div>
+    </div>
+
+    <script src="scripts/terminalFunctions.js"></script>
+    <script src="scripts/contentLoader.js"></script>
+    <script src="scripts/bootSequence.js"></script>
+    <script src="scripts/levelMessages.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        console.log('Username:', username);
+        const input = document.getElementById('input');
+
+        input.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                const command = input.value;
+                addToTerminal('> ' + command);
+                processCommand(command);
+                input.value = '';
+            }
+        });
+
+        function processCommand(command) {
+            addToTerminal('Processed command: ' + command);
+        }
+
+        function initializePage() {
+            console.log(`Initializing page`);
+            showBlocksByLevel(0);
+            startBootSequence();
+        }
+
+        window.loadLevel = function() {
+            const levelInput = document.getElementById('level-input');
+            const level = parseInt(levelInput.value);
+
+            if (level >= 0 && level <= 5) {
+                console.log(`Loading level ${level}`);
+                clearTerminal();
+                if (level === 0) {
+                    startBootSequence();
+                } else {
+                    const messages = getLevelMessages(level);
+                    messages.forEach(msg => addToTerminal(msg));
+                }
+                showBlocksByLevel(level);
+                loadPuzzle(level);
+                loadVideo(level);
+            } else {
+                alert('Please enter a valid level number (0-5)');
+            }
+        }
+
+        window.loadLevel = function() {
+            const levelInput = document.getElementById('level-input');
+            const level = parseInt(levelInput.value);
+
+            if (level >= 0 && level <= 5) {
+                console.log(`Loading level ${level}`);
+                clearTerminal();
+                if (level === 0) {
+                    startBootSequence();
+                } else {
+                    const messages = getLevelMessages(level);
+                    messages.forEach(msg => addToTerminal(msg));
+                }
+                showBlocksByLevel(level);
+                loadPuzzle(level);
+                loadVideo(level);  // Make sure this line is here
+            } else {
+                alert('Please enter a valid level number (0-5)');
+            }
+        }
+
+        function loadVideo(level) {
+            const videoContainer = document.getElementById('video-container');
+            if (level == 1) {
+                console.log("Loading video for level 1");
+                videoContainer.innerHTML = `
+                    <video width="100%" controls autoplay loop>
+                        <source src="videos/pigen.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+            } else {
+                console.log("Clearing video container");
+                videoContainer.innerHTML = 'D:\WEBAPP\CSWEB\my-app\public\videos\pigen.mp4'; // Clear the video for other levels
+            }
+        }
+
+        initializePage();
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigenère Cipher Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #vigenere-square {
+            display: grid;
+            grid-template-columns: repeat(27, 20px);
+            gap: 1px;
+            margin: 20px 0;
+        }
+        #vigenere-square div {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        .intersect {
+            background-color: orange !important;
+        }
+        #explanation {
+            margin: 20px 0;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vigenère Cipher Animation</h1>
+    <div>
+        <label for="plaintext">Plaintext:</label>
+        <input type="text" id="plaintext" value="ATTACKATDAWN" readonly>
+    </div>
+    <div>
+        <label for="key">Key:</label>
+        <input type="text" id="key" value="LEMONLEMONLE" readonly>
+    </div>
+    <div id="vigenere-square"></div>
+    <div id="explanation"></div>
+    <div>Ciphertext: <span id="ciphertext"></span></div>
+    <button id="next">Next Step</button>
+    <button id="reset">Reset</button>
+
+    <script>
+        const plaintext = document.getElementById('plaintext').value;
+        const key = document.getElementById('key').value;
+        let currentStep = 0;
+        const ciphertextElement = document.getElementById('ciphertext');
+        const explanationElement = document.getElementById('explanation');
+        const square = document.getElementById('vigenere-square');
+
+        function createVigenereSquare() {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            square.innerHTML = '';
+            square.appendChild(createCell(''));
+            for (let letter of alphabet) {
+                square.appendChild(createCell(letter));
+            }
+            for (let i = 0; i < 26; i++) {
+                square.appendChild(createCell(alphabet[i]));
+                for (let j = 0; j < 26; j++) {
+                    square.appendChild(createCell(alphabet[(i + j) % 26]));
+                }
+            }
+        }
+
+        function createCell(content) {
+            const cell = document.createElement('div');
+            cell.textContent = content;
+            return cell;
+        }
+
+        function highlightStep() {
+            clearHighlights();
+            if (currentStep >= plaintext.length) return;
+
+            const p = plaintext[currentStep];
+            const k = key[currentStep % key.length];
+            const c = String.fromCharCode((p.charCodeAt(0) - 65 + k.charCodeAt(0) - 65) % 26 + 65);
+
+            // Highlight row
+            const rowIndex = k.charCodeAt(0) - 64;
+            for (let i = 1; i <= 26; i++) {
+                square.children[rowIndex * 27 + i].classList.add('highlight');
+            }
+
+            // Highlight column
+            const colIndex = p.charCodeAt(0) - 64;
+            for (let i = 0; i <= 26; i++) {
+                square.children[i * 27 + colIndex].classList.add('highlight');
+            }
+
+            // Highlight intersection
+            square.children[rowIndex * 27 + colIndex].classList.add('intersect');
+
+            explanationElement.innerHTML = `Step ${currentStep + 1}: Plaintext '${p}' + Key '${k}' = Ciphertext '${c}'<br>
+                                            Find row '${k}', column '${p}', intersection is '${c}'`;
+
+            ciphertextElement.textContent += c;
+            currentStep++;
+        }
+
+        function clearHighlights() {
+            square.querySelectorAll('.highlight, .intersect').forEach(cell => {
+                cell.classList.remove('highlight', 'intersect');
+            });
+        }
+
+        document.getElementById('next').addEventListener('click', highlightStep);
+
+        document.getElementById('reset').addEventListener('click', () => {
+            currentStep = 0;
+            ciphertextElement.textContent = '';
+            explanationElement.textContent = '';
+            clearHighlights();
+        });
+
+        createVigenereSquare();
+    </script>
+</body>
+</html>

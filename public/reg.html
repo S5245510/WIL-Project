@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Griffith Cyber Security Bootcamp Registration</title>
+    <link rel="stylesheet" href="styles/reg.css"> <!-- Link to the external CSS file -->
+    <style>
+        .terminal-input-wrapper {
+            display: none; /* Hide the input wrapper initially */
+            display: inline-flex; /* Ensure the input is inline */
+            align-items: center; /* Vertically center the cursor and input */
+        }
+        .cursor {
+            width: 10px;
+            height: 20px;
+            background-color: #0f0;
+            margin-right: 5px;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to {
+                background-color: transparent;
+            }
+            50% {
+                background-color: #0f0;
+            }
+        }
+        .terminal-input {
+            background: none;
+            border: none;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="terminal-container">
+        <img src="GriffithUniversity-logo.png" alt="Griffith University Logo" class="logo">
+        <h1>Griffith Cyber Security Bootcamp Registration</h1>
+        <div id="terminal-output"></div>
+        <div class="terminal-input-wrapper">
+            <div class="cursor"></div>
+            <input type="text" id="terminal-input" class="terminal-input" autofocus>
+        </div>
+    </div>
+
+    <script>
+        const terminalOutput = document.getElementById('terminal-output');
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalInputWrapper = document.querySelector('.terminal-input-wrapper');
+
+        let username = '';
+        let password = '';
+        let confirmPassword = '';
+        let registrationStep = 1;
+        let lines = [
+            "$ Welcome",
+            "$ Please enter your username:"
+        ];
+        let currentLine = 0;
+
+        function addCharacter(line, index, delay, callback) {
+            setTimeout(() => {
+                if (index < line.length) {
+                    terminalOutput.innerHTML += line[index];
+                    addCharacter(line, index + 1, delay, callback);
+                } else {
+                    terminalOutput.innerHTML += '<br>';
+                    if (callback) callback();
+                }
+            }, delay);
+        }
+
+        function addLine(line, delay, callback) {
+            addCharacter(line, 0, delay, callback);
+        }
+
+        function addNextLine() {
+            if (currentLine < lines.length) {
+                addLine(lines[currentLine], 100, () => {
+                    currentLine++;
+                    if (currentLine === lines.length) {
+                        terminalInputWrapper.style.display = 'inline-flex'; // Show the input wrapper
+                        terminalInput.focus(); // Focus on the input field
+                    } else {
+                        addNextLine();
+                    }
+                });
+            }
+        }
+
+        function addDelayedLine(line, delay, callback) {
+            let index = 0;
+            function addChar() {
+                if (index < line.length) {
+                    terminalOutput.innerHTML += line[index];
+                    index++;
+                    setTimeout(addChar, 100);
+                } else {
+                    terminalOutput.innerHTML += '<br>';
+                    if (callback) callback();
+                }
+            }
+            addChar();
+        }
+
+        addNextLine();
+
+        terminalInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                const input = terminalInput.value.trim();
+                terminalInput.value = '';
+
+                if (registrationStep === 1) {
+                    username = input;
+                    terminalOutput.innerHTML += `<p>Username: ${username}</p>`;
+                    lines.push("$ Enter password:");
+                    registrationStep++;
+                    terminalInput.type = 'password';
+                    terminalInputWrapper.style.display = 'none'; // Hide the input wrapper
+                    addNextLine();
+                } else if (registrationStep === 2) {
+                    password = input;
+                    terminalOutput.innerHTML += '<p>$ Confirm password:</p>';
+                    registrationStep++;
+                    terminalInput.type = 'password';
+                } else if (registrationStep === 3) {
+                    confirmPassword = input;
+                    if (password === confirmPassword && password !== '') {
+                        terminalInputWrapper.style.display = 'none'; // Hide the input wrapper
+                        addDelayedLine("$ Account created successfully!", 100, () => {
+                            addDelayedLine("$ Redirecting to the Bootcamp...", 100, () => {
+                                addDelayedLine("...", 100, () => {
+                                    setTimeout(() => {
+                                        // Redirect to cmd.html with the username as a parameter
+                                        window.location.href = `cmd.html?username=${encodeURIComponent(username)}`;
+                                    }, 2000);
+                                });
+                            });
+                        });
+                    } else {
+                        terminalOutput.innerHTML += '<p class="error-message">Passwords do not match or are empty. Please try again.</p>';
+                        terminalOutput.innerHTML += '<p>Please enter your password again:</p>';
+                        registrationStep = 2;
+                        terminalInputWrapper.style.display = 'none'; // Hide the input wrapper
+                        addNextLine();
+                    }
+                }
+            }
+        });
+
+        terminalInput.addEventListener('input', function(event) {
+            if (registrationStep === 2 || registrationStep === 3) {
+                terminalInput.type = 'text'; // Temporarily change input type to text to show asterisks
+                const value = terminalInput.value;
+                terminalInput.value = '*'.repeat(value.length); // Replace characters with asterisks
+            }
+        });
+    </script>
+</body>
+</html>

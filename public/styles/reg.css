@@ -1,0 +1,76 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Courier New', monospace;
+    background-color: #000;
+    color: #0f0;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(0,255,0,0.1) 2px, transparent 2px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.terminal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.terminal-input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.terminal-input {
+    width: 300px;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: transparent;
+    border: none;
+    color: #0f0;
+    font-size: 16px;
+    outline: none;
+}
+
+.cursor {
+    background-color: #0f0;
+    width: 10px;
+    height: 20px;
+    margin-left: 5px;
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+}

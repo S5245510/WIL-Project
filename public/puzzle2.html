@@ -1,0 +1,30 @@
+<div id="terminal">
+    <p>Welcome to the Data Vault!</p>
+    <p>To unlock the safe, you need to decode the combination using a Vigenère cipher:</p>
+    <p>Encrypted combination: "XFMTD PAZTE"</p>
+    <p>Key: "GRIFFITH"</p>
+    <p>Enter the decoded combination:</p>
+    <input type="text" id="vigenereInput" placeholder="Decoded combination">
+    <button onclick="checkVigenereCipher()">Submit</button>
+</div>
+
+<script>
+    function checkVigenereCipher() {
+        const encryptedCombination = "XFMTD PAZTE";
+        const key = "GRIFFITH";
+        const decodedCombination = vigenereCipher(encryptedCombination, key);
+        const userInput = document.getElementById("vigenereInput").value;
+
+        if (userInput.toUpperCase() === decodedCombination.toUpperCase()) {
+            alert("Congratulations! You unlocked the safe.");
+            // Proceed to the next stage or update the game state
+        } else {
+            alert("Incorrect decoding. Please try again.");
+        }
+    }
+
+    function vigenereCipher(message, key) {
+        // Implement the Vigenère cipher decryption logic here
+        // ...
+    }
+</script>

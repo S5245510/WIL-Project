@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Material</title>
+    <!-- Link to Google Font Orbitron -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles/sample.css">
+</head>
+<body>
+    <!-- Background pattern -->
+    <div class="background"></div>
+    <!-- Main container holding all content areas -->
+    <div class="main-container">
+        <!-- Left container for additional content or navigation -->
+        <div class="left-container">
+            <h2>Left Container</h2>
+            <p>This is the left container where you can add content.</p>
+            <!-- Add your content here -->
+        </div>
+
+        <!-- Center container for the main content of the page -->
+        <div class="center-container">
+            <!-- Title banner for the page -->
+            <div class="title-banner">
+                <h1>Learning Material Title</h1>
+            </div>
+            <p>This is the middle container where you can add the main content.</p>
+            
+            <!-- Example of adding text content -->
+            <p>You can add text by using the <code>&lt;p&gt;</code> tag.</p>
+            
+            <!-- Example of adding an image -->
+            <img src="path/to/your/image.jpg" alt="Image description">
+            
+            <!-- Example of adding a video -->
+            <video width="100%" controls>
+                <!-- Update the src attribute with the path to your video file -->
+                <source src="path/to/your/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Navigation buttons for previous and next pages -->
+            <div>
+                <button onclick="goToPreviousPage()">Previous</button>
+                <button onclick="goToNextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Right container for additional content or resources -->
+        <div class="right-container">
+            <h2>Right Container</h2>
+            <p>This is the right container where you can add content.</p>
+            <!-- Add your content here -->
+        </div>
+    </div>
+
+    <!-- JavaScript functions for navigation buttons -->
+    <script>
+        function goToPreviousPage() {
+            // Add your logic to navigate to the previous page
+            console.log("Going to previous page");
+        }
+
+        function goToNextPage() {
+            // Add your logic to navigate to the next page
+            console.log("Going to next page");
+        }
+    </script>
+</body>
+</html>

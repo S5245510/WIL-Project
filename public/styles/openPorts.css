@@ -1,0 +1,32 @@
+.open-ports {
+    background-color: #000;
+    color: #0f0;
+    padding: 20px;
+  }
+  
+  .open-ports h3 {
+    margin-top: 0;
+  }
+  
+  .detection-status p {
+    margin: 5px 0;
+  }
+  
+  .port-list {
+    margin-top: 20px;
+  }
+  
+  .port-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .port-status {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f00;
+  }

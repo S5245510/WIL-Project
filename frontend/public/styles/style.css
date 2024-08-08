@@ -1,0 +1,38 @@
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: none;
+    text-align: center;
+}
+
+.container.active {
+    display: block;
+}
+
+input, button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.terminal {
+    background-color: #111;
+    padding: 20px;
+    border: 2px solid #0f0;
+    height: 300px;
+    width: 600px;
+    overflow-y: auto;
+}
+
+.output {
+    text-align: left;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Escape: The Griffith Challenge</title>
+    <link rel="stylesheet" href="styles/cmd.css"> <!-- Corrected path to the CSS file -->
+</head>
+<body>
+    <div class="container">
+        <div class="left-container">
+            <h2>Announcements</h2>
+            <!-- Add your announcements or blog posts here -->
+            <h3>System Status</h3>
+            <!-- Add your system status information here -->
+            <div id="video-container"></div> <!-- Placeholder for the video -->
+        </div>
+        <div class="center-container">
+            <h1>Cyber Escape: The Griffith Challenge</h1>
+            <div id="terminal"></div>
+            <input type="text" id="input" placeholder="Enter command...">
+            <div class="system-stats">
+                <div class="stat-bar">
+                    CPU Usage
+                    <div class="progress-bar" id="cpu-usage"></div>
+                </div>
+                <div class="stat-bar">
+                    RAM Usage
+                    <div class="progress-bar" id="ram-usage"></div>
+                </div>
+                <div class="stat-bar">
+                    Hacking Resources
+                    <div class="progress-bar" id="hacking-resources"></div>
+                    <input type="number" id="level-input" placeholder="Enter level number">
+                    <button onclick="loadLevel()">Load Level</button>
+                </div>
+            </div>
+            <div id="main-container"></div> <!-- Container for dynamic content -->
+            <div class="puzzle-container" id="puzzle-container"></div> <!-- Puzzle container -->
+        </div>
+        <div class="right-container">
+            <h2>Hacker Notes</h2>
+            <div class="file-item" id="home" onclick="showDetails('home')">/home</div>
+            <div class="file-item" id="log" onclick="showDetails('log')">/log</div>
+            <div class="file-item" id="bin" onclick="showDetails('bin')">/bin</div>
+            <div class="file-item" id="sys" onclick="showDetails('sys')">/sys</div>
+            <div id="details"></div>
+        </div>
+    </div>
+
+    <script src="scripts/terminalFunctions.js"></script> <!-- Include terminal functions script -->
+    <script src="scripts/contentLoader.js"></script> <!-- Include content loader script -->
+    <script src="scripts/bootSequence.js"></script> <!-- Include boot sequence script -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        console.log('Username:', username);
+        const input = document.getElementById('input');
+
+        input.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                const command = input.value;
+                addToTerminal('> ' + command);
+                processCommand(command);
+                input.value = '';
+            }
+        });
+
+        function processCommand(command) {
+            // Add your command processing logic here
+            // This is where you'll implement the game's puzzles and progression
+        }
+
+        // Function to initialize the page
+        function initializePage() {
+            console.log(`Initializing page with no level`);
+            showBlocksByLevel(0); // No blocks initially
+        }
+
+        // Function to load the level from the input field
+        function loadLevel() {
+            const levelInput = document.getElementById('level-input');
+            const level = levelInput.value;
+
+            if (level) {
+                console.log(`Loading level ${level}`);
+                showBlocksByLevel(level);
+                loadPuzzle(level);
+                loadVideo(level); // Load video based on level
+            } else {
+                alert('Please enter a valid level number');
+            }
+        }
+
+        // Function to load the video based on the level
+        function loadVideo(level) {
+            const videoContainer = document.getElementById('video-container');
+            if (level == 1) {
+                videoContainer.innerHTML = `
+                    <video width="100%" controls autoplay loop>
+                        <source src="videos/pigen.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+            } else {
+                videoContainer.innerHTML = ''; // Clear the video for other levels
+            }
+        }
+
+        // Initialize the page
+        initializePage();
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<div id="terminal">
+    <p>Welcome to the Malware Maze!</p>
+    <p>To find the correct path, solve the following RSA encryption problem:</p>
+    <p>Public Key: (e = 7, n = 33)</p>
+    <p>Encrypted Path: [15, 2, 20, 26, 12, 30, 11]</p>
+    <p>Enter the decrypted path:</p>
+    <input type="text" id="rsaInput" placeholder="Decrypted path">
+    <button onclick="checkRSAEncryption()">Submit</button>
+</div>
+
+<script>
+    function checkRSAEncryption() {
+        const publicKey = {e: 7, n: 33};
+        const encryptedPath = [15, 2, 20, 26, 12, 30, 11];
+        const decryptedPath = rsaDecrypt(encryptedPath, publicKey);
+        const userInput = document.getElementById("rsaInput").value;
+
+        if (userInput.toUpperCase() === decryptedPath.toUpperCase()) {
+            alert("Congratulations! You found the correct path.");
+            // Proceed to the next stage or update the game state
+        } else {
+            alert("Incorrect decryption. Please try again.");
+        }
+    }
+
+    function rsaDecrypt(encryptedMessage, publicKey) {
+        // Implement the RSA decryption logic here
+        // ...
+    }
+</script>

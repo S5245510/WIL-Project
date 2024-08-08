@@ -1,0 +1,51 @@
+Story Plot: "The Cyber Escape"
+
+Introduction:
+Welcome to the Cyber Escape, a thrilling and educational adventure where students must use their knowledge of encryption and cryptography to solve puzzles and escape from a series of virtual rooms. Each room presents unique challenges that test their skills and understanding of cybersecurity concepts. The ultimate goal is to unlock the final door and escape from the Cyber Trap.
+
+Setting the Scene:
+
+Prologue: The Digital Enigma
+The adventure begins with the students attending a special workshop at Griffith University, where they are introduced to a cutting-edge virtual reality program designed to teach them about cybersecurity. As they put on their VR headsets, they are transported into a digital world, a high-tech facility where their skills will be tested.
+
+Chapter 1: The Entry Gate
+The students find themselves in a dark room with a single locked door and a computer terminal. A holographic guide named "Cipher" appears, explaining that they are trapped in a Cyber Trap and must use their knowledge to solve puzzles and unlock doors to progress to the next level. The first task is to decrypt a simple message using a Caesar cipher.
+* Puzzle 1: Decrypt a message encoded with a Caesar cipher. The decrypted message reveals the code to unlock the door.
+
+Chapter 2: The Firewall
+After successfully decrypting the message and opening the first door, the students enter a room filled with laser beams representing a firewall. They must disable the firewall by solving a series of substitution cipher puzzles.
+* Puzzle 2: Solve substitution ciphers to disable the firewall and proceed to the next room.
+
+Chapter 3: The Data Vault
+The next room is a high-security data vault. Inside, they find a locked safe containing a keycard needed to open the next door. To unlock the safe, they must solve a Vigenère cipher.
+* Puzzle 3: Use the Vigenère cipher to decode the combination for the safe.
+
+Chapter 4: The Malware Maze
+With the keycard in hand, the students enter a maze filled with malicious code. They must navigate through the maze by solving RSA encryption challenges that reveal the correct path.
+* Puzzle 4: Solve RSA encryption problems to find the correct path through the malware maze.
+
+Chapter 5: The Phishing Phenom
+In the next room, the students encounter a series of email terminals. Each terminal has a different phishing email, and they must identify the fraudulent ones to gain access to the next door. This challenge tests their knowledge of common phishing tactics and how to spot suspicious emails.
+* Puzzle 5: Analyze email content to identify phishing attempts and enter the correct responses to unlock the door.
+
+Chapter 6: The Encrypted Archive
+The students enter a room that looks like an old library filled with encrypted books. They must decrypt the information in these books using a mix of cryptographic techniques they have learned, such as DES and AES, to find the key phrase that will unlock the next door.
+* Puzzle 6: Decrypt sections of text using DES and AES to find the key phrase hidden in the encrypted archive.
+
+Chapter 7: The Quantum Quandary
+Next, they find themselves in a room with a quantum computer. They must solve a puzzle involving Shor's algorithm to break a quantum-resistant encryption scheme and retrieve a critical piece of information needed to progress.
+* Puzzle 7: Implement Shor's algorithm on the quantum computer to break the encryption and reveal the code for the next door.
+
+Chapter 8: The Steganography Lab
+The following room is a high-tech lab filled with images and audio files. The students must use steganography techniques to uncover hidden messages within these files. These hidden messages will provide clues to unlock the next door.
+* Puzzle 8: Extract hidden messages from images and audio files using steganography techniques.
+
+Chapter 9: The Final Firewall
+The students arrive at the final challenge, a heavily fortified firewall protecting the main exit. They must use a combination of all the skills they have learned, including hashing, asymmetric encryption, and digital signatures, to create a bypass and shut down the firewall.
+* Puzzle 9: Combine multiple cryptographic techniques to generate a bypass code and shut down the final firewall.
+
+Chapter 10: The Great Escape
+With the final firewall down, the students unlock the main exit. As they step through the door, they are greeted by Cipher, who congratulates them on their successful escape and mastery of cryptographic principles. The students remove their VR headsets and find themselves back in the real world, ready to apply their newfound knowledge to real-world cybersecurity challenges.
+
+Epilogue: The Cybersecurity Guardians
+Having completed the Cyber Escape, the students are awarded certificates of achievement and are encouraged to continue their journey in cybersecurity. They leave the workshop with a deeper understanding of encryption and cryptography, empowered to become the next generation of cybersecurity guardians.

@@ -1,0 +1,30 @@
+<div id="terminal">
+    <p>Welcome to the Entry Gate!</p>
+    <p>To unlock the door, you need to decrypt the following message using a Caesar cipher:</p>
+    <p>Encrypted message: "WKLV LV WKH FRGH WR XQORFN WKH GRRU"</p>
+    <p>Shift value: 3</p>
+    <p>Enter the decrypted message:</p>
+    <input type="text" id="caesarInput" placeholder="Decrypted message">
+    <button onclick="checkCaesarCipher()">Submit</button>
+</div>
+
+<script>
+    function checkCaesarCipher() {
+        const encryptedMessage = "WKLV LV WKH FRGH WR XQORFN WKH GRRU";
+        const shiftValue = 3;
+        const decryptedMessage = caesarCipher(encryptedMessage, shiftValue);
+        const userInput = document.getElementById("caesarInput").value;
+
+        if (userInput.toUpperCase() === decryptedMessage.toUpperCase()) {
+            alert("Congratulations! You unlocked the door.");
+            // Proceed to the next stage or update the game state
+        } else {
+            alert("Incorrect decryption. Please try again.");
+        }
+    }
+
+    function caesarCipher(message, shift) {
+        // Implement the Caesar cipher decryption logic here
+        // ...
+    }
+</script>

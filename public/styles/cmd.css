@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Courier New', monospace;
+    background-color: #000;
+    color: #0f0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-image: url('../images/OIP.jpg'); /* Ensure this is the correct path */
+    background-size: 100% auto; /* Scale width to 100% and height auto */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-position: center bottom; /* Align the image to the bottom */
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Adding semi-transparent background to ensure readability */
+}
+
+/* Title styling with glow effect */
+.center-container h1 {
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
+    color: #00ff00; /* Neon green color */
+    text-align: center;
+}
+
+
+.left-container, .right-container {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #0f0; /* Add green border */
+}
+.center-container {
+    flex: 2;
+    padding: 10px;
+}
+#terminal {
+    border: 1px solid #0f0;
+    height: 400px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+#input {
+    background-color: #000;
+    border: 1px solid #0f0;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    margin-top: 10px;
+    padding: 5px;
+    width: 100%;
+}
+.system-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.stat-bar {
+    width: 30%;
+    background-color: #000;
+    border: 1px solid #0f0;
+    padding: 5px;
+}
+.progress-bar {
+    width: 0;
+    height: 10px;
+    background-color: #0f0;
+    transition: width 0.5s;
+}
+.legend-row {
+    display: flex;
+}
+.legend-item {
+    margin-right: 10px;
+}
+.right-container {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.file-item {
+    border: 1px solid #0f0;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    text-align: left;
+}
+.file-item:hover {
+    background-color: #333;
+}
+#details {
+    margin-top: 20px;
+}
+.puzzle-container {
+    border: 2px solid #00ffff; /* Hacker light blue color */
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #000; /* Background color to match the terminal */
+    color: #0f0; /* Green text color */
+    font-family: 'Courier New', monospace;
+    overflow-y: auto; /* Ensure scroll if content overflows */
+    max-height: 400px; /* Set a max height to control overflow */
+}
+
+.legend-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); /* 9 columns for 3 rows */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.legend-item {
+    text-align: center;
+}
+#terminal {
+    background-color: #000;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    padding: 10px;
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #0f0;
+}
+
+#input {
+    width: 100%;
+    padding: 5px;
+    background-color: #000;
+    color: #0f0;
+    border: 1px solid #0f0;
+    font-family: 'Courier New', monospace;
+}
